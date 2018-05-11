@@ -49,12 +49,7 @@ class Product
     private $priceHT;
 
     /**
-     * @ORM\Column(type="float")
-     */
-    private $TVA;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="product", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="product", cascade={"persist"}, orphanRemoval=true)
      */
     private $pictures;
 
@@ -136,18 +131,6 @@ class Product
     public function setPriceHT(?float $priceHT): self
     {
         $this->priceHT = $priceHT;
-
-        return $this;
-    }
-
-    public function getTVA(): ?float
-    {
-        return $this->TVA;
-    }
-
-    public function setTVA(float $TVA): self
-    {
-        $this->TVA = $TVA;
 
         return $this;
     }

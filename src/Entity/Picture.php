@@ -27,7 +27,7 @@ class Picture
     private $path;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Product", inversedBy="pictures")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Product", inversedBy="pictures", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $product;
