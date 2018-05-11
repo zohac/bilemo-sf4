@@ -1,4 +1,6 @@
 {
+    "name": "bilemo",
+    "description": "A web service exposing an API.",
     "type": "project",
     "license": "proprietary",
     "require": {
