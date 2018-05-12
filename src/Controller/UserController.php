@@ -16,7 +16,7 @@ class UserController extends FOSRestController
      *      path="/users",
      *      name="user_list"
      * )
-     * 
+     *
      * @Rest\View()
      */
     public function list(UserRepository $manager, UserInterface $user)

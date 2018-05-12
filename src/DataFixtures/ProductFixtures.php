@@ -6,9 +6,10 @@ use App\Entity\Product;
 use App\Entity\Picture;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Symfony\Component\Yaml\Yaml;
 
-class ProductFixtures extends Fixture
+class ProductFixtures extends Fixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -33,5 +34,10 @@ class ProductFixtures extends Fixture
             $manager->persist($product);
         }
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        return 1;
     }
 }

@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * A User.
- * 
+ *
  * @ORM\Table(name="user")
  * @UniqueEntity(fields="email", message="Email déjà utilisé")
  * @UniqueEntity(fields="username", message="Pseudo déjà utilisé.")

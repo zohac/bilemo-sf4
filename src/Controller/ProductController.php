@@ -15,7 +15,7 @@ class ProductController extends FOSRestController
      *      path="/products",
      *      name="product_list"
      * )
-     * 
+     *
      * @Rest\View()
      */
     public function list(ProductRepository $manager)
@@ -30,7 +30,7 @@ class ProductController extends FOSRestController
      *      requirements = {"id"="\d+"}
      * )
      * @Entity("product", expr="repository.findOneWhithAllEntities(id)")
-     * 
+     *
      * @Rest\View()
      */
     public function detail(Product $product)

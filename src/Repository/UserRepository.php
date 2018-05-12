@@ -29,7 +29,7 @@ class UserRepository extends ServiceEntityRepository
      *
      * @return array|null
      */
-    public function findAllWhithAllEntities(User $user): ?array
+    public function findAllWhithAllEntities(): ?array
     {
         return $this->createQueryBuilder('u')
             ->leftJoin('u.pictures', 'pic')
