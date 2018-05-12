@@ -14,37 +14,47 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class ProductRepository extends ServiceEntityRepository
 {
+    /**
+     * Constructor.
+     *
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Product::class);
     }
 
-//    /**
-//     * @return Product[] Returns an array of Product objects
-//     */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Return the list of product with all associated entities.
+     *
+     * @return array|null
+     */
+    public function findAllWhithAllEntities(): ?array
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+            ->leftJoin('p.pictures', 'pic')
+            ->addSelect('pic')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Product
+    /**
+     * Return a product with all associated entities.
+     *
+     * @param int $value
+     *
+     * @return Product|null
+     */
+    public function findOneWhithAllEntities(int $value): ?Product
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->leftJoin('p.pictures', 'pic')
+            ->addSelect('pic')
+            ->andWhere('p.id = :id')
+            ->setParameter('id', $value)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
 }
