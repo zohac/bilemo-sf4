@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
+
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
  * @method User|null findOneBy(array $criteria, array $orderBy = null)
  * @method User[]    findAll()
@@ -14,6 +15,8 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UserRepository extends ServiceEntityRepository
 {
+
+
     /**
      * Constructor.
      *
@@ -21,6 +24,7 @@ class UserRepository extends ServiceEntityRepository
      */
     public function __construct(RegistryInterface $registry)
     {
+
         parent::__construct($registry, User::class);
     }
 
@@ -31,6 +35,7 @@ class UserRepository extends ServiceEntityRepository
      */
     public function findAllWhithAllEntities(User $user): ?array
     {
+
         return $this->createQueryBuilder('u')
             ->leftJoin('u.pictures', 'pic')
             ->addSelect('pic')

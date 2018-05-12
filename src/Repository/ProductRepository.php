@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
+
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
  * @method Product|null findOneBy(array $criteria, array $orderBy = null)
  * @method Product[]    findAll()
@@ -14,6 +15,8 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class ProductRepository extends ServiceEntityRepository
 {
+
+
     /**
      * Constructor.
      *
@@ -21,6 +24,7 @@ class ProductRepository extends ServiceEntityRepository
      */
     public function __construct(RegistryInterface $registry)
     {
+
         parent::__construct($registry, Product::class);
     }
 
@@ -31,6 +35,7 @@ class ProductRepository extends ServiceEntityRepository
      */
     public function findAllWhithAllEntities(): ?array
     {
+
         return $this->createQueryBuilder('p')
             ->leftJoin('p.pictures', 'pic')
             ->addSelect('pic')
@@ -48,6 +53,7 @@ class ProductRepository extends ServiceEntityRepository
      */
     public function findOneWhithAllEntities(int $value): ?Product
     {
+
         return $this->createQueryBuilder('p')
             ->leftJoin('p.pictures', 'pic')
             ->addSelect('pic')
