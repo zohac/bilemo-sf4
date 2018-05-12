@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 class ProductRepository extends ServiceEntityRepository
 {
     /**
-     * Constructor
+     * Constructor.
      *
      * @param RegistryInterface $registry
      */
@@ -42,7 +42,8 @@ class ProductRepository extends ServiceEntityRepository
     /**
      * Return a product with all associated entities.
      *
-     * @param integer $value
+     * @param int $value
+     *
      * @return Product|null
      */
     public function findOneWhithAllEntities(int $value): ?Product
