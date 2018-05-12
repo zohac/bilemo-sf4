@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * 
  * @ORM\Table(name="user")
  * @UniqueEntity(fields="email", message="Email déjà utilisé")
+ * @UniqueEntity(fields="username", message="Pseudo déjà utilisé.")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface
@@ -24,6 +25,11 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $username;
+
+    /**
      * @ORM\Column(type="string", length=100)
      */
     private $firstName;
@@ -34,7 +40,7 @@ class User implements UserInterface
     private $lastName;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
 
@@ -169,5 +175,24 @@ class User implements UserInterface
         $this->customer = $customer;
 
         return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     */
+    public function eraseCredentials()
+    {
     }
 }

@@ -14,37 +14,28 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UserRepository extends ServiceEntityRepository
 {
+    /**
+     * Constructor.
+     *
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, User::class);
     }
 
-//    /**
-//     * @return User[] Returns an array of User objects
-//     */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Return the list of product with all associated entities.
+     *
+     * @return array|null
+     */
+    public function findAllWhithAllEntities(User $user): ?array
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
+            ->leftJoin('u.pictures', 'pic')
+            ->addSelect('pic')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
