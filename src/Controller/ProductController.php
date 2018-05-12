@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Repository\ProductRepository;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 
 class ProductController extends FOSRestController
 {
@@ -14,11 +15,12 @@ class ProductController extends FOSRestController
      *      path="/products",
      *      name="product_list"
      * )
+     * 
      * @Rest\View()
      */
     public function list(ProductRepository $manager)
     {
-        return $manager->findAll();
+        return $manager->findAllWhithAllEntities();
     }
 
     /**
@@ -27,6 +29,8 @@ class ProductController extends FOSRestController
      *      name="product_detail",
      *      requirements = {"id"="\d+"}
      * )
+     * @Entity("product", expr="repository.findOneWhithAllEntities(id)")
+     * 
      * @Rest\View()
      */
     public function detail(Product $product)
