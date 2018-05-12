@@ -6,6 +6,9 @@
     <arg value="p"/>
 
     <file>src</file>
+    <file>public</file>
+
+    <exclude-pattern>public/bundles/*</exclude-pattern>
 
     <rule ref="PSR2" />
 </ruleset>
