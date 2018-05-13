@@ -25,3 +25,12 @@ yarn-error.log
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
+
+# PHP-CS-FIXER
+.php_cs.cache
+
+# PHP-CodeSniffer
+phpcs.xml
+
+# PHPmd
+phpmd.html

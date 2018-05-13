@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="snowtricks">
+<ruleset name="bilemo">
     <description>A custom coding standard</description>
 
     <arg name="colors"/>
@@ -10,5 +10,6 @@
 
     <exclude-pattern>public/bundles/*</exclude-pattern>
 
+    <rule ref="PSR1" />
     <rule ref="PSR2" />
 </ruleset>
