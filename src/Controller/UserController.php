@@ -14,7 +14,7 @@ class UserController extends FOSRestController
 {
     /**
      * @Rest\Get(
-     *      path="/users",
+     *      path="/api/users",
      *      name="user_list"
      * )
      *

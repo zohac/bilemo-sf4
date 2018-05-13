@@ -32,8 +32,8 @@ class UserRepository extends ServiceEntityRepository
     public function findAllWhithAllEntities(): ?array
     {
         return $this->createQueryBuilder('u')
-            ->leftJoin('u.pictures', 'pic')
-            ->addSelect('pic')
+            ->leftJoin('u.customer', 'c')
+            ->addSelect('c')
             ->getQuery()
             ->getResult()
         ;
