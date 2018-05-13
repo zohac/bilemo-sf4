@@ -37,7 +37,27 @@ If you want to use a data set
 
     php bin/console doctrine:fixtures:load
 
+Configure the jwt authentication
+
+    mkdir -p config/jwt
+    openssl genrsa -out config/jwt/private.pem -aes256 4096
+    openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+
+Changes the pass phrase in the '.env' file.
+
 ## Dependency
+
+* FOSRestBundle "friendsofsymfony/rest-bundle"
+  * Bundle addressing common issues during REST API development.
+* LexikJWTAuthenticationBundle "lexik/jwt-authentication-bundle"
+  * JWT authentication.
+* NelmioApiDocBundle "nelmio/api-doc-bundle"
+  * Document the API.
+* BazingaHateoasBundle "willdurand/hateoas-bundle"
+  * Make the API self-discoverable (last level of the Richardson maturity model).
+* JMSSerializerBundle "jms/serializer-bundle"
+  * Required for BazingaHateoasBundle.
+* orm-fixtures "doctrine/doctrine-fixtures-bundle"
 
 ## Issues
 

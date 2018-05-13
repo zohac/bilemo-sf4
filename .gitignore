@@ -34,3 +34,7 @@ phpcs.xml
 
 # PHPmd
 phpmd.html
+
+###> config/jwt ###
+/config/jwt/*
+###< config/jwt ###
