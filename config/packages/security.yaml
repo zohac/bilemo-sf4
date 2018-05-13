@@ -1,7 +1,19 @@
 security:
+    role_hierarchy:
+        # Admin inherits user rights
+        ROLE_ADMIN:       [ROLE_USER]
+
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: ~ }
+        main:
+            entity:
+                class:      App\Entity\User
+                property:   username
+
+    encoders:
+        App\Entity\User: bcrypt
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
