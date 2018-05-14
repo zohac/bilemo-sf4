@@ -29,13 +29,34 @@ class UserRepository extends ServiceEntityRepository
      *
      * @return array|null
      */
-    public function findAllWhithAllEntities(): ?array
+    public function findAllWhithAllEntities(User $user): ?array
     {
         return $this->createQueryBuilder('u')
             ->leftJoin('u.customer', 'c')
             ->addSelect('c')
+            ->andWhere('c.name = :customer')
+            ->setParameter('customer', $user->getCustomer()->getName())
             ->getQuery()
             ->getResult()
+        ;
+    }
+
+    /**
+     * Return a user with all associated entities.
+     *
+     * @param int $value
+     *
+     * @return User|null
+     */
+    public function findOneWhithAllEntities(int $value): ?User
+    {
+        return $this->createQueryBuilder('u')
+            ->leftJoin('u.customer', 'c')
+            ->addSelect('c')
+            ->andWhere('u.id = :id')
+            ->setParameter('id', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
         ;
     }
 }
