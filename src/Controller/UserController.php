@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Exception\ResourceValidationException;
 use Doctrine\Common\Persistence\ObjectManager;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\ConstraintViolationList;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -64,8 +66,19 @@ class UserController extends FOSRestController
         User $user,
         UserInterface $originator = null,
         UserPasswordEncoderInterface $encoder,
-        ObjectManager $entityManager
+        ObjectManager $entityManager,
+        ConstraintViolationList $violations
     ) {
+        // Check the contraint in user entiy
+        if (count($violations)) {
+            $message = 'The JSON sent contains invalid data. Here are the errors you need to correct: ';
+            foreach ($violations as $violation) {
+                $message .= sprintf('Field %s: %s ', $violation->getPropertyPath(), $violation->getMessage());
+            }
+
+            throw new ResourceValidationException($message);
+        }
+
         // Set the Customer
         $user->setCustomer($originator->getCustomer());
         // Encode the password
