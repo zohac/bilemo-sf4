@@ -16,6 +16,8 @@ fos_rest:
             prefer_extension: false
     body_converter:
         enabled: true
+        validate: true
+        validation_errors_argument: violations
     view:
         formats: 
             json: true

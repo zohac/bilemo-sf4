@@ -26,37 +26,41 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank()
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=60)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
      * @Assert\Length(max=4096)
      * @Assert\Regex(
      *      pattern="/^[a-zA-Z0-9]{6,}$/",
      *      message="Le mot de passe doit comporter au moins 6 caractères, minuscule, majuscule et numérique."
      * )
+     * @Assert\NotBlank()
+     */
+    private $password;
+
+    /**
+     * @var string
      */
     private $plainPassword;
 
