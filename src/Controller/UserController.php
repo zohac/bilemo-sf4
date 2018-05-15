@@ -104,7 +104,7 @@ class UserController extends FOSRestController
      *
      * @Security("has_role('ROLE_USER')")
      */
-    public function delete(User $user, ObjectManager $entityManager)
+    public function delete(User $user, ObjectManager $entityManager, ConstraintViolationList $violations)
     {
         $entityManager->remove($user);
         $entityManager->flush();

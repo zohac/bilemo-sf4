@@ -26,3 +26,10 @@ fos_rest:
         view_response_listener:  true
     serializer:
         serialize_null: false
+    exception:
+        enabled: true
+        codes:
+            App\Exception\ResourceValidationException: 400
+        messages:
+            App\Exception\ResourceValidationException: true
+        exception_controller: 'fos_rest.exception.controller:showAction'
