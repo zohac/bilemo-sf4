@@ -69,14 +69,9 @@ class UserController extends FOSRestController
         ObjectManager $entityManager,
         ConstraintViolationList $violations
     ) {
-        // Check the contraint in user entiy
+        // Check the contraint in user entity
         if (count($violations)) {
-            $message = 'The JSON sent contains invalid data. Here are the errors you need to correct: ';
-            foreach ($violations as $violation) {
-                $message .= sprintf('Field %s: %s ', $violation->getPropertyPath(), $violation->getMessage());
-            }
-
-            throw new ResourceValidationException($message);
+            throw new ResourceValidationException($violations);
         }
 
         // Set the Customer
