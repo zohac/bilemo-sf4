@@ -13,7 +13,7 @@ class ResourceValidationException extends \Exception
 
     /**
      * The default status code.
-     * 422: Unprocessable entity
+     * 422: Unprocessable entity.
      *
      * @var int
      */

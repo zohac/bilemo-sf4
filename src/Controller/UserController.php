@@ -30,7 +30,7 @@ class UserController extends FOSRestController
      * @Rest\View()
      *
      * @Security("has_role('ROLE_USER')")
-     * 
+     *
      * @SWG\Get(
      *     description="Get the list of users.",
      *     tags = {"User"},
@@ -71,7 +71,7 @@ class UserController extends FOSRestController
      * @Rest\View()
      *
      * @Security("has_role('ROLE_USER')")
-     * 
+     *
      * @SWG\Get(
      *     description="Get one user.",
      *     tags = {"User"},
@@ -119,7 +119,7 @@ class UserController extends FOSRestController
      * @Rest\View(StatusCode = 201)
      *
      * @Security("has_role('ROLE_USER')")
-     * 
+     *
      * @SWG\Post(
      *     description="Create one user.",
      *     tags = {"User"},
@@ -191,7 +191,7 @@ class UserController extends FOSRestController
      * @Rest\View(StatusCode = 204)
      *
      * @Security("has_role('ROLE_USER')")
-     * 
+     *
      * @SWG\Delete(
      *     description="Delete one user.",
      *     tags = {"User"},

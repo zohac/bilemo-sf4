@@ -27,36 +27,36 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * 
+     *
      * @Groups({"user"})
-     * 
+     *
      * @Assert\NotBlank()
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * 
+     *
      * @Groups({"user"})
-     * 
+     *
      * @Assert\NotBlank()
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * 
+     *
      * @Groups({"user"})
-     * 
+     *
      * @Assert\NotBlank()
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * 
+     *
      * @Groups({"user"})
-     * 
+     *
      * @Assert\NotBlank()
      */
     private $email;
@@ -68,9 +68,9 @@ class User implements UserInterface
      *      pattern="/^[a-zA-Z0-9]{6,}$/",
      *      message="Le mot de passe doit comporter au moins 6 caractères, minuscule, majuscule et numérique."
      * )
-     * 
+     *
      * @Groups({"user"})
-     * 
+     *
      * @Assert\NotBlank()
      */
     private $password;

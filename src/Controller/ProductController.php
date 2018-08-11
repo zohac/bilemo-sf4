@@ -11,20 +11,20 @@ use FOS\RestBundle\Controller\FOSRestController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 
 /**
- * Controller managing the products
+ * Controller managing the products.
  */
 class ProductController extends FOSRestController
 {
     /**
      * Get the list of all product.
-     * 
+     *
      * @Rest\Get(
      *      path="/api/products",
      *      name="product_list"
      * )
      *
      * @Rest\View(StatusCode = 200)
-     * 
+     *
      * @SWG\Get(
      *     description="Get the list of products.",
      *     tags = {"Product"},
@@ -63,7 +63,7 @@ class ProductController extends FOSRestController
      * @Entity("product", expr="repository.findOneWhithAllEntities(id)")
      *
      * @Rest\View(StatusCode = 200)
-     * 
+     *
      * @SWG\Get(
      *     description="Get one product.",
      *     tags = {"Product"},
