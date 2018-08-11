@@ -39,9 +39,10 @@ class ExceptionListener
 
         //var_dump($exception); die;
         $messages = (method_exists($exception, 'getMessages')) ? $exception->getMessages() : $exception->getMessage();
+        $code = (method_exists($exception, 'getStatusCode')) ? $exception->getStatusCode() : $exception->getCode();
 
         $message[] = [
-            'code' => $exception->getStatusCode(),
+            'code' => $code,
             'messages' => $messages,
         ];
 
@@ -54,7 +55,7 @@ class ExceptionListener
         $satusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
 
         if ($exception instanceof HttpExceptionInterface) {
-            $satusCode = $exception->getStatusCode();
+            $satusCode = $code;
         }
         $response->setStatusCode($satusCode);
         $response->headers->set('Content-Type', 'application/json');

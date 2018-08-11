@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use Swagger\Annotations as SWG;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use App\Exception\ResourceValidationException;
 use Doctrine\Common\Persistence\ObjectManager;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -28,6 +30,30 @@ class UserController extends FOSRestController
      * @Rest\View()
      *
      * @Security("has_role('ROLE_USER')")
+     *
+     * @SWG\Get(
+     *     description="Get the list of users.",
+     *     tags = {"User"},
+     *     @SWG\Response(
+     *          response=200,
+     *          description="successful operation"
+     *     ),
+     *     @SWG\Response(
+     *         response="401",
+     *         description="Unauthorized: JWT Token not found / Expired JWT Token / Invalid JWT Token",
+     *     ),
+     *     @SWG\Response(
+     *          response=405,
+     *          description="Method Not Allowed"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="Authorization",
+     *          required= true,
+     *          in="header",
+     *          type="string",
+     *          description="Bearer Token",
+     *     )
+     * )
      */
     public function list(UserRepository $manager, UserInterface $user = null)
     {
@@ -37,7 +63,7 @@ class UserController extends FOSRestController
     /**
      * @Rest\Get(
      *      path="/api/users/{id}",
-     *      name="users_detail",
+     *      name="users_show",
      *      requirements = {"id"="\d+"}
      * )
      * @Entity("user", expr="repository.findOneWhithAllEntities(id)")
@@ -45,6 +71,38 @@ class UserController extends FOSRestController
      * @Rest\View()
      *
      * @Security("has_role('ROLE_USER')")
+     *
+     * @SWG\Get(
+     *     description="Get one user.",
+     *     tags = {"User"},
+     *     @SWG\Response(
+     *          response=200,
+     *          @Model(type=User::class),
+     *          description="successful operation"
+     *     ),
+     *     @SWG\Response(
+     *         response="401",
+     *         description="Unauthorized: JWT Token not found / Expired JWT Token / Invalid JWT Token",
+     *     ),
+     *     @SWG\Response(
+     *          response=405,
+     *          description="Method Not Allowed"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="id",
+     *          required= true,
+     *          in="path",
+     *          type="integer",
+     *          description="The user unique identifier.",
+     *     ),
+     *     @SWG\Parameter(
+     *          name="Authorization",
+     *          required= true,
+     *          in="header",
+     *          type="string",
+     *          description="Bearer Token",
+     *     )
+     * )
      */
     public function detail(User $user)
     {
@@ -61,6 +119,41 @@ class UserController extends FOSRestController
      * @Rest\View(StatusCode = 201)
      *
      * @Security("has_role('ROLE_USER')")
+     *
+     * @SWG\Post(
+     *     description="Create one user.",
+     *     tags = {"User"},
+     *     @SWG\Response(
+     *          response=200,
+     *          description="successful operation"
+     *     ),
+     *     @SWG\Response(
+     *         response="401",
+     *         description="Unauthorized: JWT Token not found / Expired JWT Token / Invalid JWT Token",
+     *     ),
+     *     @SWG\Response(
+     *          response=405,
+     *          description="Method Not Allowed"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="Body",
+     *          required= true,
+     *          in="body",
+     *          type="string",
+     *          description="All property user to add",
+     *          @SWG\Schema(
+     *              type="array",
+     *              @Model(type=User::class, groups={"user"})
+     *          )
+     *      ),
+     *     @SWG\Parameter(
+     *          name="Authorization",
+     *          required= true,
+     *          in="header",
+     *          type="string",
+     *          description="Bearer Token",
+     *     )
+     * )
      */
     public function create(
         User $user,
@@ -98,6 +191,37 @@ class UserController extends FOSRestController
      * @Rest\View(StatusCode = 204)
      *
      * @Security("has_role('ROLE_USER')")
+     *
+     * @SWG\Delete(
+     *     description="Delete one user.",
+     *     tags = {"User"},
+     *     @SWG\Response(
+     *          response=204,
+     *          description="No Content"
+     *     ),
+     *     @SWG\Response(
+     *         response="401",
+     *         description="Unauthorized: JWT Token not found / Expired JWT Token / Invalid JWT Token",
+     *     ),
+     *     @SWG\Response(
+     *          response=405,
+     *          description="Method Not Allowed"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="id",
+     *          required= true,
+     *          in="path",
+     *          type="integer",
+     *          description="The user unique identifier.",
+     *     ),
+     *     @SWG\Parameter(
+     *          name="Authorization",
+     *          required= true,
+     *          in="header",
+     *          type="string",
+     *          description="Bearer Token",
+     *     )
+     * )
      */
     public function delete(User $user, ObjectManager $entityManager)
     {
