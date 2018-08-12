@@ -28,7 +28,7 @@ class UserController extends FOSRestController
      *      name="users_list"
      * )
      *
-     * @Rest\View()
+     * @Rest\View(statusCode = 200)
      *
      * @Security("has_role('ROLE_USER')")
      *
@@ -69,7 +69,7 @@ class UserController extends FOSRestController
      * )
      * @Entity("user", expr="repository.findOneWhithAllEntities(id)")
      *
-     * @Rest\View()
+     * @Rest\View(statusCode = 200)
      *
      * @Security("has_role('ROLE_USER')")
      *
@@ -131,8 +131,8 @@ class UserController extends FOSRestController
      *     description="Create one user.",
      *     tags = {"User"},
      *     @SWG\Response(
-     *          response=200,
-     *          description="successful operation"
+     *          response=201,
+     *          description="Created"
      *     ),
      *      @SWG\Response(
      *         response="400",
@@ -202,7 +202,7 @@ class UserController extends FOSRestController
      * @ParamConverter("userUpdate", converter="fos_rest.request_body")
      * @ParamConverter("user",  options={"mapping"={"id"="id"}})
      *
-     * @Rest\View(StatusCode = 201)
+     * @Rest\View(StatusCode = 200)
      *
      * @Security("has_role('ROLE_USER')")
      *

@@ -54,7 +54,7 @@ class UpdateUserHandler
             $user->setEmail($userUpdate->getEmail());
         }
         if ($userUpdate->getPassword()) {
-            $password = $this->passwordEncoder($userUpdate->getPassword());
+            $password = $this->passwordEncoder->encodePassword($user, $userUpdate->getPassword());
             $user->setPassword($password);
         }
 
