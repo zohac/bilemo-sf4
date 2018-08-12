@@ -206,7 +206,7 @@ class UserController extends FOSRestController
      *
      * @Security("has_role('ROLE_USER')")
      *
-     * @SWG\Post(
+     * @SWG\Put(
      *     description="Update one user.",
      *     tags = {"User"},
      *     @SWG\Response(
