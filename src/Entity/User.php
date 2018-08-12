@@ -30,7 +30,7 @@ class User implements UserInterface
      *
      * @Groups({"user"})
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Create"})
      */
     private $username;
 
@@ -39,7 +39,7 @@ class User implements UserInterface
      *
      * @Groups({"user"})
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Create"})
      */
     private $firstname;
 
@@ -48,7 +48,7 @@ class User implements UserInterface
      *
      * @Groups({"user"})
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Create"})
      */
     private $lastname;
 
@@ -57,7 +57,7 @@ class User implements UserInterface
      *
      * @Groups({"user"})
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Create"})
      */
     private $email;
 
@@ -71,7 +71,7 @@ class User implements UserInterface
      *
      * @Groups({"user"})
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Create"})
      */
     private $password;
 
