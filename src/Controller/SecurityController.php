@@ -13,7 +13,7 @@ class SecurityController extends FOSRestController
      *      path="/api/login_check",
      *      name="login_check"
      * )
-     * 
+     *
      * @SWG\Post(
      *     description="Authentication client and get access token",
      *     tags = {"Authentication"},
